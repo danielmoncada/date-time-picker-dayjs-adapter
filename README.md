@@ -22,11 +22,11 @@ How to Use
     ```typescript
     import { NgModule } from '@angular/core';
     import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS} from '@danielmoncada/angular-datetime-picker;
-    import { OwlMomentDateTimeModule } from '@danielmoncada/angular-datetime-picker-dayjs-adapter';
+    import { OwlDayJsDateTimeModule } from '@danielmoncada/angular-datetime-picker-dayjs-adapter';
 
-    // See the Moment.js docs for the meaning of these formats:
-    // https://momentjs.com/docs/#/displaying/format/
-    export const MY_MOMENT_FORMATS = {
+    // See the Day.js docs for the meaning of these formats:
+    // https://day.js.org/docs/en/display/format
+    export const MY_DAYJS_FORMATS = {
         parseInput: 'l LT',
         fullPickerInput: 'l LT',
         datePickerInput: 'l',
@@ -37,9 +37,9 @@ How to Use
     };
 
     @NgModule({
-        imports: [OwlDateTimeModule, OwlMomentDateTimeModule],
+        imports: [OwlDateTimeModule, OwlDayJsDateTimeModule],
         providers: [
-            {provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS},
+            {provide: OWL_DATE_TIME_FORMATS, useValue: MY_DAYJS_FORMATS},
         ],
     })
     export class AppExampleModule {
