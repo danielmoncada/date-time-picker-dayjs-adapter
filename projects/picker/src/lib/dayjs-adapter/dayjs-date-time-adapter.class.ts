@@ -239,7 +239,7 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
             unitType: dayjs.UnitType,
             amount: number
         ) {
-            if (amount) {
+            if (amount >= 0) {
                 return date.set(unitType, amount);
             }
             return date;
