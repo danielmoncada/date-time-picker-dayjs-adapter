@@ -1,6 +1,6 @@
 {
   "name": "@danielmoncada/angular-datetime-picker-dayjs-adapter",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Angular Date Time Picker (DayJs Adpater)",
   "keywords": [
     "Angular",
@@ -25,9 +25,9 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/common": "^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
-    "@angular/core": "^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
-    "@angular/cdk": "^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0"
+    "@angular/common": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
+    "@angular/core": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
+    "@angular/cdk": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
