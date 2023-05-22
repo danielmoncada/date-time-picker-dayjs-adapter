@@ -278,9 +278,7 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
     }
 
     public parse(value: any, parseFormat: any): dayjs.Dayjs {
-        return dayjs(value, {
-            format: parseFormat
-        });
+        return dayjs(value, parseFormat);
     }
 
     private createDayjs(date: dayjs.Dayjs): dayjs.Dayjs {
