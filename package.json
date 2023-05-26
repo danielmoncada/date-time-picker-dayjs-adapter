@@ -24,7 +24,7 @@
     "test-with-coverage": "ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox --code-coverage=true picker",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build_lib": "ng build picker --prod=true && cp README.md dist/picker",
+    "build_lib": "ng build picker --configuration production && cp README.md dist/picker",
     "npm_pack": "cd dist/picker && npm pack",
     "package_windows": "npm run build_lib && npm run npm_pack",
     "package_linux": "npm run build_lib && npm run npm_pack"
