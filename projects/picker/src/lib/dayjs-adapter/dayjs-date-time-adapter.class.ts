@@ -173,6 +173,30 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
         return dayjs.isDayjs(obj);
     }
 
+    /**
+     * Attempts to deserialize a value to a valid date object. This is different from parsing in that
+     * deserialize should only accept non-ambiguous, locale-independent formats (e.g. a ISO 8601
+     * string). The datepicker will call this method on all of it's `@Input()` properties that accept dates.
+     * It is therefore possible to support passing values from your backend directly to these properties by
+     * overriding this method to also deserialize the format used by your backend.
+     * In this dayjs adapter it accepts Dayjs objects or strings that can be input into the dayjs contructor (e.g. ISO 8601).
+     */
+    public deserialize(value: dayjs.Dayjs | null | string): dayjs.Dayjs | null {
+        if (typeof value === 'string') {
+            const constructedDayjs = dayjs(value);
+            return this.isValid(constructedDayjs)
+                ? constructedDayjs
+                : this.invalid();
+        } else if (
+            value == null ||
+            (this.isDateInstance(value) && this.isValid(value))
+        ) {
+            return value;
+        }
+
+        return this.invalid();
+    }
+
     public addCalendarYears(date: dayjs.Dayjs, amount: number): dayjs.Dayjs {
         return this.clone(date).add(amount, 'year');
     }
