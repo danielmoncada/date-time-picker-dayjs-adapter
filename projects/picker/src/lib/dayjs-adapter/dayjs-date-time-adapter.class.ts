@@ -3,10 +3,13 @@
  */
 
 import { Inject, Injectable, Optional, InjectionToken } from '@angular/core';
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from '@danielmoncada/angular-datetime-picker';
-import * as dayjs from 'dayjs';
-import * as localData from 'dayjs/plugin/localeData';
-import * as LocalizedFormat from 'dayjs/plugin/localizedFormat';
+import {
+    DateTimeAdapter,
+    OWL_DATE_TIME_LOCALE,
+} from '@danielmoncada/angular-datetime-picker';
+import dayjs from 'dayjs';
+import localData from 'dayjs/plugin/localeData';
+import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 
 dayjs.extend(LocalizedFormat);
 dayjs.extend(localData);
@@ -21,17 +24,19 @@ export interface OwlDayJsDateTimeAdapterOptions {
 }
 
 /** InjectionToken for dayjs date adapter to configure options. */
-export const OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<
-OwlDayJsDateTimeAdapterOptions
->('OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS', {
-    providedIn: 'root',
-    factory: OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS_FACTORY
-});
+export const OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS =
+    new InjectionToken<OwlDayJsDateTimeAdapterOptions>(
+        'OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS',
+        {
+            providedIn: 'root',
+            factory: OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS_FACTORY,
+        }
+    );
 
 /** @docs-private */
 export function OWL_DAYJS_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): OwlDayJsDateTimeAdapterOptions {
     return {
-        useUtc: false
+        useUtc: false,
     };
 }
 
@@ -46,7 +51,6 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 
 @Injectable()
 export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
-
     private _localeData: {
         longMonths: string[];
         shortMonths: string[];
@@ -71,16 +75,16 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
     public setLocale(locale: string) {
         super.setLocale(locale);
 
-        const dayjsLocalData = dayjs()
-            .locale(locale)
-            .localeData();
+        const dayjsLocalData = dayjs().locale(locale).localeData();
         this._localeData = {
             longMonths: dayjsLocalData.months(),
             shortMonths: dayjsLocalData.monthsShort(),
             longDaysOfWeek: dayjsLocalData.weekdaysShort(), //Doesn't support long names yet, will be available in future release https://github.com/iamkun/dayjs/issues/779
             shortDaysOfWeek: dayjsLocalData.weekdaysShort(),
             narrowDaysOfWeek: dayjsLocalData.weekdaysMin(),
-            dates: range(31, i => this.createDate(2017, 0, i + 1).format('D'))
+            dates: range(31, (i) =>
+                this.createDate(2017, 0, i + 1).format('D')
+            ),
         };
     }
 
@@ -91,7 +95,7 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
     public getMonth(date: dayjs.Dayjs): number {
         return this.clone(date).month();
     }
-    
+
     public getDay(date: dayjs.Dayjs): number {
         return this.clone(date).day();
     }
@@ -124,18 +128,20 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
         dateLeft: dayjs.Dayjs,
         dateRight: dayjs.Dayjs
     ): number {
-        return dateLeft.diff(dateRight, 'day');
+        return Math.ceil(dateLeft.diff(dateRight, 'day', true));
     }
 
     public getYearName(date: dayjs.Dayjs): string {
         return date.format('YYYY');
     }
 
-    public getMonthNames( style: 'long' | 'short' | 'narrow' ): string[] {
-        return style === 'long' ? this._localeData.longMonths : this._localeData.shortMonths;
+    public getMonthNames(style: 'long' | 'short' | 'narrow'): string[] {
+        return style === 'long'
+            ? this._localeData.longMonths
+            : this._localeData.shortMonths;
     }
 
-    public getDayOfWeekNames( style: 'long' | 'short' | 'narrow' ): string[] {
+    public getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (style === 'long') {
             return this._localeData.longDaysOfWeek;
         }
@@ -222,10 +228,14 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
     }
 
     public createDate(year: number, month: number, date: number): dayjs.Dayjs;
-    public createDate( year: number, month: number, date: number, 
-        hours: number = 0, 
-        minutes: number = 0, 
-        seconds: number = 0): dayjs.Dayjs {
+    public createDate(
+        year: number,
+        month: number,
+        date: number,
+        hours: number = 0,
+        minutes: number = 0,
+        seconds: number = 0
+    ): dayjs.Dayjs {
         if (month < 0 || month > 11) {
             throw Error(
                 `Invalid month index "${month}". Month index has to be between 0 and 11.`
@@ -288,9 +298,7 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
     }
 
     public clone(date: dayjs.Dayjs): dayjs.Dayjs {
-        return this.createDayjs(date)
-            .clone()
-            .locale(this.locale);
+        return this.createDayjs(date).clone().locale(this.locale);
     }
 
     public now(): dayjs.Dayjs {
@@ -309,7 +317,7 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
         return date === null
             ? dayjs(null, { utc: this.options.useUtc })
             : dayjs(date, {
-                  utc: this.options.useUtc
+                  utc: this.options.useUtc,
               });
     }
 }
