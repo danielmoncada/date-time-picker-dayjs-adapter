@@ -1,6 +1,6 @@
 {
   "name": "@danielmoncada/angular-datetime-picker-dayjs-adapter",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Angular Date Time Picker (DayJs Adapter)",
   "keywords": [
     "Angular",
