@@ -128,7 +128,9 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
         dateLeft: dayjs.Dayjs,
         dateRight: dayjs.Dayjs
     ): number {
-        return Math.ceil(dateLeft.diff(dateRight, 'day', true));
+        return Math.ceil(
+            dateLeft.startOf('day').diff(dateRight.startOf('day'), 'day', true)
+        );
     }
 
     public getYearName(date: dayjs.Dayjs): string {
