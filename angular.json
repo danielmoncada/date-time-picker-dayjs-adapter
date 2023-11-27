@@ -150,6 +150,5 @@
                 }
             }
         }
-    },
-    "defaultProject": "date-time-picker-dayjs-adapter"
+    }
 }
