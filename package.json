@@ -43,7 +43,7 @@
     "@angular/platform-browser-dynamic": "^11.2.14",
     "@angular/router": "^11.2.14",
     "core-js": "^3.33.3",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.10",
     "dayjs-plugin-utc": "^0.1.2",
     "np": "^6.2.0",
     "rxjs": "^6.5.4",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1102.19",
-    "@angular/cdk": "^10.2.7",
+    "@angular/cdk": "^11.2.13",
     "@angular/cli": "^11.2.19",
     "@angular/compiler-cli": "^11.2.14",
     "@angular/language-service": "^11.2.14",
