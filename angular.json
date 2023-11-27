@@ -70,18 +70,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "date-time-picker-dayjs-adapter:build"
+                      "buildTarget": "date-time-picker-dayjs-adapter:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "date-time-picker-dayjs-adapter:build:production"
+                          "buildTarget": "date-time-picker-dayjs-adapter:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "date-time-picker-dayjs-adapter:build"
+                      "buildTarget": "date-time-picker-dayjs-adapter:build"
                     }
                 },
                 "test": {
