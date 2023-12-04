@@ -33,7 +33,7 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@danielmoncada/angular-datetime-picker": "^13.1.0",
-    "dayjs": "^1.10.7"
+    "@danielmoncada/angular-datetime-picker": "^17.0.0",
+    "dayjs": "^1.11.10"
   }
 }
