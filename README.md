@@ -6,7 +6,13 @@ Angular Date Time Picker (DayJs Adapter)
 
 **Angular date time picker - DayJs Adpater**
 
-**This package supports Angular 9/10/11/12/13/14/15/16**
+**The current version of this package supports Angular 17**
+
+If you need support for other Angular version, see *Breaking Changes* below.
+
+Breaking Changes
+-------
+- Version 3.x.x >= no longer supports ng 16 - 13. If you need ng 16-13 support, stick with version 2.x.x.
 
 Description
 -------

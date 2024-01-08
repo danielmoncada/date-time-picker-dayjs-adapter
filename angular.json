@@ -10,14 +10,13 @@
             "prefix": "owl",
             "schematics": {
                 "@schematics/angular:component": {
-                    "style": "sass"
+                    "style": "scss"
                 }
             },
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "aot": true,
                         "outputPath": "dist/date-time-picker-dayjs-adapter",
                         "index": "src/index.html",
                         "main": "src/main.ts",
@@ -28,9 +27,15 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.sass"
+                            "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
                     },
                     "configurations": {
                         "production": {
@@ -43,9 +48,7 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -61,23 +64,24 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "defaultConfiguration": ""
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "date-time-picker-dayjs-adapter:build"
+                      "buildTarget": "date-time-picker-dayjs-adapter:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "date-time-picker-dayjs-adapter:build:production"
+                          "buildTarget": "date-time-picker-dayjs-adapter:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "date-time-picker-dayjs-adapter:build"
+                      "buildTarget": "date-time-picker-dayjs-adapter:build"
                     }
                 },
                 "test": {
@@ -88,24 +92,12 @@
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
                         "styles": [
-                            "src/styles.sass"
+                            "src/styles.scss"
                         ],
                         "scripts": [],
                         "assets": [
                             "src/favicon.ico",
                             "src/assets"
-                        ]
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "src/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
                         ]
                     }
                 }
@@ -127,15 +119,6 @@
                             "devServerTarget": "date-time-picker-dayjs-adapter:serve:production"
                         }
                     }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
                 }
             }
         },
@@ -146,7 +129,7 @@
             "prefix": "owl",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/picker/tsconfig.lib.json",
                         "project": "projects/picker/ng-package.json"
@@ -164,21 +147,8 @@
                         "tsConfig": "projects/picker/tsconfig.spec.json",
                         "karmaConfig": "projects/picker/karma.conf.js"
                     }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/picker/tsconfig.lib.json",
-                            "projects/picker/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
                 }
             }
         }
-    },
-    "defaultProject": "date-time-picker-dayjs-adapter"
+    }
 }
