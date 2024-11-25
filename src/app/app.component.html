@@ -3,3 +3,22 @@
        [owlDateTime]="date_range_component" style="width: 100%; color: cornflowerblue" id="daterange" matInput required>
 <owl-date-time #date_range_component [startAt]="currentValue" [endAt]="endValue"
        (afterPickerClosed)="selectedTrigger($event)" (dateSelected)="selectedTrigger($event)"></owl-date-time>
+
+<br />
+<br />
+
+<label for="daterange">Date and time:</label>
+<input
+    [(ngModel)]="selectedMoment"
+    [owlDateTimeTrigger]="date_time_component"
+    [owlDateTime]="date_time_component"
+    [max]="maxDate"
+    style="width: 100%; color: cornflowerblue"
+    id="datetime"
+    matInput
+    required
+/>
+<owl-date-time
+    #date_time_component
+    pickerType="calendar"
+></owl-date-time>
