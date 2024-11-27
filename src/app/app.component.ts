@@ -21,6 +21,9 @@ export class AppComponent implements AfterViewInit {
   public endValue: Date = new Date('4/21/2020, 11:59 PM');
   public open_once = false;
 
+  selectedMoment: any;
+  maxDate = dayjs().startOf('day');
+
   public constructor() {
     this.selectedMoments.push(dayjs('2019-03-11T08:00:00+11:00').tz('America/Los_Angeles'));
     this.selectedMoments.push(dayjs('2019-03-11T15:00:00+11:00').tz('America/Los_Angeles'));

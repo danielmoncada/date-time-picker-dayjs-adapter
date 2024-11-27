@@ -287,6 +287,7 @@ export class DayjsDateTimeAdapter extends DateTimeAdapter<dayjs.Dayjs> {
         result = trySetUnit(result, 'hour', hours);
         result = trySetUnit(result, 'minute', minutes);
         result = trySetUnit(result, 'second', seconds);
+        result = trySetUnit(result, 'milliseconds', 0);
         result.locale(this.locale);
 
         // If the result isn't valid, the date must have been out of bounds for this month.
