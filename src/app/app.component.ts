@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import * as dayjs from 'dayjs';
-import * as tz from 'dayjs/plugin/timezone';
-import * as utc from 'dayjs/plugin/utc'
+import dayjs from 'dayjs';
+import tz from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc'
 import { OwlDateTimeComponent } from '@danielmoncada/angular-datetime-picker';
 
 dayjs.extend(utc);
